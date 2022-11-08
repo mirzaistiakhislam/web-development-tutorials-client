@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -38,17 +38,11 @@ const Login = () => {
                 const user = result.user;
                 form.reset();
                 setError('');
-                if (user.emailVerified) {
-                    Navigate(from, { replace: true });
-                }
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
                 setError(error.message);
-            })
-
-            .finally(() => {
-                setLoading(false);
             })
     }
 
