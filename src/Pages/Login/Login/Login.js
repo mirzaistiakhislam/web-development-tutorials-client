@@ -1,13 +1,18 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
 
+    const [error, setError] = useState('');
+
     const { googleProviderLogin, signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const googleProvider = new GoogleAuthProvider()
 
     const handleGoogleSignIn = () => {
@@ -28,8 +33,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 form.reset();
+                setError('');
+                navigate('/');
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                setError(error.message);
+            });
     }
 
     return (
@@ -50,7 +60,7 @@ const Login = () => {
                 </Button>
             </Form.Group>
             <Form.Text className="text-danger">
-                We'll never share your email with anyone else.
+                {error}
             </Form.Text> <br />
 
             <Button onClick={handleGoogleSignIn} variant="outline-primary" className='mt-2'> <FaGoogle></FaGoogle> Login with Google</Button>
