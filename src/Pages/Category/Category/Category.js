@@ -1,13 +1,21 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import CoursesCard from '../../Shared/CoursesCard/CoursesCard';
 
 const Category = () => {
 
-    const courses = useLoaderData();
+    const categoryCourses = useLoaderData();
+    // console.log(categoryCourses);
 
     return (
         <div>
-            <h2>category: {courses.length}</h2>
+            <h2>category: {categoryCourses.length}</h2>
+            {
+                categoryCourses.map(course => <CoursesCard
+                    key={course._id}
+                    course={course}
+                ></CoursesCard>)
+            }
         </div>
     );
 };
