@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FaDev, FaUser } from "react-icons/fa";
+import { FaDev, FaUser, FaToggleOff } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
+import { CiDark } from 'react-icons/ci';
+import { MdDarkMode } from 'react-icons/md';
+
 
 const Header = () => {
+
+    const [toggle, setToggle] = useState(false);
 
     const { user, logOut } = useContext(AuthContext);
 
@@ -18,6 +23,15 @@ const Header = () => {
             .then(() => { })
             .catch(error => console.error(error))
     }
+
+    // const darkMode = () => {
+    //     if (!toggle) {
+    //         setToggle(true);
+    //     }
+    //     else {
+    //         setToggle(false);
+    //     }
+    // }
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -29,7 +43,19 @@ const Header = () => {
                             <Nav.Link href="#features">Courses</Nav.Link>
                             <Nav.Link href="#pricing">FAQ</Nav.Link>
                             <Nav.Link href="#pricing">Blog</Nav.Link>
+
                         </Nav>
+                        <Link>
+                            {
+                                toggle
+                                    ?
+                                    <Button variant="success">Toogle Success</Button>
+                                    :
+                                    null
+                            }
+
+                            <FaToggleOff onClick={() => setToggle(!toggle)}></FaToggleOff>
+                        </Link>
                         <Nav>
                             <>
                                 {
@@ -59,6 +85,7 @@ const Header = () => {
                                 }
                             </Link>
                         </Nav>
+
                         <div className='d-lg-none'>
                             <LeftSideNav></LeftSideNav>
                         </div>
