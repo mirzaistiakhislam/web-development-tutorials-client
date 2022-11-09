@@ -17,7 +17,7 @@ const Register = () => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const photoURL = form.photoURLvalue;
+        const photoURL = form.photoURL.value;
         const password = form.password.value;
 
         createUser(email, password)
@@ -51,17 +51,17 @@ const Register = () => {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicEmail1">
                 <Form.Label>Your Full Name</Form.Label>
                 <Form.Control type="text" name="name" placeholder="Enter Full Name" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicEmail2">
                 <Form.Label>Your Email Address</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Enter Your Email" required />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicEmail3">
                 <Form.Label>Your PhotoURL</Form.Label>
                 <Form.Control type="text" name="photoURL" placeholder="Enter PhotoURL" />
             </Form.Group>

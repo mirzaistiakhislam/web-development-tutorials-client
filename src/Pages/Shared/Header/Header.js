@@ -15,6 +15,7 @@ const Header = () => {
     const [toggle, setToggle] = useState(false);
 
     const { user, logOut } = useContext(AuthContext);
+    console.log(user);
 
     const handleLogOut = () => {
         logOut()
@@ -30,10 +31,10 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand><Link to='/'><FaDev></FaDev> Web Development Tutorials</Link></Navbar.Brand>
+                    <Navbar.Brand><Link to='/' style={{ textDecoration: 'none', color: '#ffffff', fontSize: 22, fontWeight: 'bold' }}><FaDev style={{ paddingBottom: '6px', fontSize: '30px' }} ></FaDev> Web Development Tutorials</Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav className="me-auto pt-1">
                             <Nav.Link href="#features">Courses</Nav.Link>
                             <Nav.Link href="#pricing">FAQ</Nav.Link>
                             <Nav.Link href="#pricing">Blog</Nav.Link>
@@ -53,29 +54,32 @@ const Header = () => {
                                 {
                                     user?.uid ?
                                         <>
-                                            <span>{user?.displayName}</span>
+                                            <span style={{ color: '#ffffff', marginRight: '20px', marginTop: '5px' }} >{user?.displayName}</span>
+
+                                            {
+                                                user?.photoURL ?
+                                                    <Image
+                                                        style={{ height: '30px', marginRight: '25px', marginTop: '4px' }} roundedCircle
+                                                        src={user?.photoURL}>
+                                                    </Image>
+                                                    : <FaUser style={{ color: 'white', height: '30px', marginRight: '25px', marginTop: '4px' }}></FaUser>
+
+                                            }
+
                                             <Button variant='light' onClick={handleLogOut}>
                                                 Logout
                                             </Button>
                                         </>
                                         :
                                         <>
-                                            <Link to='/login'>Login</Link>
-                                            <Link to='/register'>Register</Link>
+                                            <Button variant='light' className='me-3'><Link to='/login' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Login</Link></Button>
+                                            <Button variant='light'><Link to='/register' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Register</Link></Button>
                                         </>
                                 }
+
+
                             </>
 
-                            <Link to='/profile'>
-                                {
-                                    user?.photoURL ?
-                                        <Image
-                                            style={{ height: '30px' }} roundedCircle
-                                            src={user?.photoURL}>
-                                        </Image>
-                                        : <FaUser></FaUser>
-                                }
-                            </Link>
                         </Nav>
 
                         <div className='d-lg-none'>
