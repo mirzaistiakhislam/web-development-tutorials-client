@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Courses = () => {
 
@@ -16,7 +16,9 @@ const Courses = () => {
                 <Card.Text>
                     {details}
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Link to={`/courses/premium/${courses._id}`}>
+                    <Button variant="primary">Go somewhere</Button>
+                </Link>
             </Card.Body>
         </Card>
     );
