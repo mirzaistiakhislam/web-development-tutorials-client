@@ -3,13 +3,11 @@ import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FaDev, FaUser, FaToggleOff } from "react-icons/fa";
+import { FaDev, FaUser, FaToggleOff, FaToggleOn } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
-import { CiDark } from 'react-icons/ci';
-import { MdDarkMode } from 'react-icons/md';
+import './Header.css';
 
 
 const Header = () => {
@@ -24,14 +22,10 @@ const Header = () => {
             .catch(error => console.error(error))
     }
 
-    // const darkMode = () => {
-    //     if (!toggle) {
-    //         setToggle(true);
-    //     }
-    //     else {
-    //         setToggle(false);
-    //     }
-    // }
+    const handleToggle = () => {
+        setToggle(!toggle);
+    }
+
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -43,19 +37,17 @@ const Header = () => {
                             <Nav.Link href="#features">Courses</Nav.Link>
                             <Nav.Link href="#pricing">FAQ</Nav.Link>
                             <Nav.Link href="#pricing">Blog</Nav.Link>
+                            <Button onClick={handleToggle} variant="dark" className='px-5'>
+                                {
+                                    toggle
+                                        ?
+                                        <FaToggleOff fontSize={30}></FaToggleOff>
+                                        :
+                                        <FaToggleOn fontSize={30} ></FaToggleOn>
+                                }
+                            </Button>
 
                         </Nav>
-                        <Link>
-                            {
-                                toggle
-                                    ?
-                                    <Button variant="success">Toogle Success</Button>
-                                    :
-                                    null
-                            }
-
-                            <FaToggleOff onClick={() => setToggle(!toggle)}></FaToggleOff>
-                        </Link>
                         <Nav>
                             <>
                                 {
