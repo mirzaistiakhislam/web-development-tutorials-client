@@ -54,5 +54,9 @@ export const routes = createBrowserRouter([
                 element: <TermsAndConditions></TermsAndConditions>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <div>this route not found</div>
     }
 ])

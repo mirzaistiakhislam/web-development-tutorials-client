@@ -10,7 +10,9 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import './Header.css';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.cjs';
-import { hover } from '@testing-library/user-event/dist/hover';
+// import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 const Header = () => {
@@ -63,7 +65,7 @@ const Header = () => {
 
                             {
                                 user?.uid ?
-                                    <>
+                                    <div className='d-flex'>
                                         <span style={{ color: '#ffffff', marginRight: '20px', marginTop: '5px' }} >{user?.displayName}</span>
 
                                         {
@@ -71,7 +73,9 @@ const Header = () => {
 
                                                 <Tippy content={user.displayName}>
                                                     <Image
-                                                        style={{ height: '30px', marginRight: '25px', marginTop: '4px' }} roundedCircle
+                                                        style={{
+                                                            height: '30px', marginRight: '25px', marginTop: '4px',
+                                                        }} roundedCircle
                                                         src={user?.photoURL}>
                                                     </Image>
                                                 </Tippy>
@@ -83,7 +87,7 @@ const Header = () => {
                                         <Button variant='light' onClick={handleLogOut}>
                                             Logout
                                         </Button>
-                                    </>
+                                    </div>
                                     :
                                     <>
                                         <Button variant='light' className='me-3 w-100'><Link to='/login' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Login</Link></Button>
