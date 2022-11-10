@@ -84,8 +84,8 @@ const Header = () => {
                                     </>
                                     :
                                     <>
-                                        <Button variant='light' className='me-3'><Link to='/login' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Login</Link></Button>
-                                        <Button variant='light'><Link to='/register' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Register</Link></Button>
+                                        <Button variant='light' className='me-3 w-100'><Link to='/login' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Login</Link></Button>
+                                        <Button variant='light' className='w-100'><Link to='/register' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Register</Link></Button>
                                     </>
                             }
 
