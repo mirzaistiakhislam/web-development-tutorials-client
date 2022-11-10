@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,20 +9,34 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 const Login = () => {
 
     const [error, setError] = useState('');
+    const [user, setUser] = useState({})
 
-    const { googleProviderLogin, signIn, setLoading } = useContext(AuthContext);
+    const { googleProviderLogin, githubProviderLogin, signIn, setLoading } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
 
-    const googleProvider = new GoogleAuthProvider()
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = () => {
         googleProviderLogin(googleProvider)
             .then(result => {
                 const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error(error))
+    }
+
+    const handleGithubSignIn = () => {
+        githubProviderLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
     }
@@ -69,7 +83,7 @@ const Login = () => {
 
             <Button onClick={handleGoogleSignIn} variant="outline-primary" className='mt-2'> <FaGoogle></FaGoogle> Login with Google</Button>
 
-            <Button variant="outline-primary" className='mt-2'> <FaGithub></FaGithub> Login with Github</Button>
+            <Button onClick={handleGithubSignIn} variant="outline-primary" className='mt-2'> <FaGithub></FaGithub> Login with Github</Button>
         </Form>
     );
 };

@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import './Header.css';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.cjs';
 
 
 const Header = () => {
@@ -27,8 +29,11 @@ const Header = () => {
         setToggle(!toggle);
     }
 
+
+
     return (
         <div>
+
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand><Link to='/' style={{ textDecoration: 'none', color: '#ffffff', fontSize: 22, fontWeight: 'bold' }}><FaDev style={{ paddingBottom: '6px', fontSize: '30px' }} ></FaDev> Web Development Tutorials</Link></Navbar.Brand>
@@ -50,35 +55,37 @@ const Header = () => {
 
                         </Nav>
                         <Nav>
-                            <>
-                                {
-                                    user?.uid ?
-                                        <>
-                                            <span style={{ color: '#ffffff', marginRight: '20px', marginTop: '5px' }} >{user?.displayName}</span>
 
-                                            {
-                                                user?.photoURL ?
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span style={{ color: '#ffffff', marginRight: '20px', marginTop: '5px' }} >{user?.displayName}</span>
+
+                                        {
+                                            user?.photoURL ?
+
+                                                <Tippy content={user.displayName}>
                                                     <Image
                                                         style={{ height: '30px', marginRight: '25px', marginTop: '4px' }} roundedCircle
                                                         src={user?.photoURL}>
                                                     </Image>
-                                                    : <FaUser style={{ color: 'white', height: '30px', marginRight: '25px', marginTop: '4px' }}></FaUser>
+                                                </Tippy>
 
-                                            }
+                                                : <FaUser style={{ color: 'white', height: '30px', marginRight: '25px', marginTop: '4px' }}></FaUser>
 
-                                            <Button variant='light' onClick={handleLogOut}>
-                                                Logout
-                                            </Button>
-                                        </>
-                                        :
-                                        <>
-                                            <Button variant='light' className='me-3'><Link to='/login' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Login</Link></Button>
-                                            <Button variant='light'><Link to='/register' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Register</Link></Button>
-                                        </>
-                                }
+                                        }
 
+                                        <Button variant='light' onClick={handleLogOut}>
+                                            Logout
+                                        </Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Button variant='light' className='me-3'><Link to='/login' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Login</Link></Button>
+                                        <Button variant='light'><Link to='/register' style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>Register</Link></Button>
+                                    </>
+                            }
 
-                            </>
 
                         </Nav>
 
