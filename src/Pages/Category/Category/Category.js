@@ -9,13 +9,14 @@ const Category = () => {
 
     return (
         <div>
-            <h2>category: {categoryCourses.length}</h2>
+
             {
                 categoryCourses.map(course => <CoursesCard
                     key={course._id}
                     course={course}
                 ></CoursesCard>)
             }
+
         </div>
     );
 };

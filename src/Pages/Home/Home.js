@@ -7,7 +7,7 @@ const Home = () => {
     const courses = useLoaderData();
     return (
         <div>
-            <h2>Courses: {courses.length}</h2>
+
             {
                 courses.map(course => <CoursesCard
                     key={course._id}

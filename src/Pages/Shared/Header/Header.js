@@ -10,6 +10,7 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import './Header.css';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.cjs';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 
 const Header = () => {
@@ -32,7 +33,8 @@ const Header = () => {
 
 
     return (
-        <div>
+
+        <div className='mb-4'>
 
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
@@ -40,9 +42,10 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto pt-1">
-                            <Nav.Link href="#features">Courses</Nav.Link>
-                            <Nav.Link href="#pricing">FAQ</Nav.Link>
-                            <Nav.Link href="#pricing">Blog</Nav.Link>
+                            <Link to='/' style={{ textDecoration: 'none', color: '#ffffff', fontSize: '20px', marginTop: '4px', marginLeft: '20px', padding: '2px 10px 0 10px' }} className='link'>Courses</Link>
+                            <Link style={{ textDecoration: 'none', color: '#ffffff', fontSize: '20px', marginTop: '4px', marginLeft: '20px', padding: '2px 10px 0 10px' }} className='link' >FAQ</Link>
+                            <Link style={{ textDecoration: 'none', color: '#ffffff', fontSize: '20px', marginTop: '4px', marginLeft: '20px', padding: '2px 10px 0 10px' }}
+                                className='link'>Blog</Link>
                             <Button onClick={handleToggle} variant="dark" className='px-5'>
                                 {
                                     toggle

@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -80,7 +80,7 @@ const Login = () => {
             <Form.Text className="text-danger">
                 {error}
             </Form.Text> <br />
-
+            <p>Don't have an account? Create account now <Link to='/register'>Register here</Link></p>
             <Button onClick={handleGoogleSignIn} variant="outline-primary" className='mt-2'> <FaGoogle></FaGoogle> Login with Google</Button>
 
             <Button onClick={handleGithubSignIn} variant="outline-primary" className='mt-2'> <FaGithub></FaGithub> Login with Github</Button>
