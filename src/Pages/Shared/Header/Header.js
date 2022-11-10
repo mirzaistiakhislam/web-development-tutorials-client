@@ -43,9 +43,11 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto pt-1">
                             <Link to='/' style={{ textDecoration: 'none', color: '#ffffff', fontSize: '20px', marginTop: '4px', marginLeft: '20px', padding: '2px 10px 0 10px' }} className='link'>Courses</Link>
+
                             <Link style={{ textDecoration: 'none', color: '#ffffff', fontSize: '20px', marginTop: '4px', marginLeft: '20px', padding: '2px 10px 0 10px' }} className='link' >FAQ</Link>
-                            <Link style={{ textDecoration: 'none', color: '#ffffff', fontSize: '20px', marginTop: '4px', marginLeft: '20px', padding: '2px 10px 0 10px' }}
-                                className='link'>Blog</Link>
+
+                            <Link to='/blogs' style={{ textDecoration: 'none', color: '#ffffff', fontSize: '20px', marginTop: '4px', marginLeft: '20px', padding: '2px 10px 0 10px' }}
+                                className='link'>Blogs</Link>
                             <Button onClick={handleToggle} variant="dark" className='px-5'>
                                 {
                                     toggle
